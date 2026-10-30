@@ -1,0 +1,53 @@
+App\Entity\Place:
+    properties:
+        latitude:
+            - Range:
+                  min: -90
+                  max: 90
+                  groups: ['create', 'edit']
+                  notInRangeMessage: 'This value should be between {{ min }} and {{ max }}.'
+        longitude:
+            - Range:
+                  min: -180
+                  max: 180
+                  groups: ['create', 'edit']
+                  notInRangeMessage: 'This value should be between {{ min }} and {{ max }}.'
+        city:
+            - NotBlank:
+                  groups: ['create', 'edit']
+                  message: 'City name is required.'
+        country:
+            - NotBlank:
+                  groups: ['create', 'edit']
+                  message: 'You need to choose country.'
+
+App\Entity\Measurement:
+    properties:
+        humidity:
+            - Range:
+                  min: 0
+                  max: 100
+                  groups: ['create', 'edit']
+                  notInRangeMessage: 'This value should be between {{ min }} and {{ max }} %.'
+        wind:
+            - PositiveOrZero:
+                  groups: ['create', 'edit']
+                  message: 'This value can not be negative.'
+        precipitation:
+            - PositiveOrZero:
+                  groups: ['create', 'edit']
+                  message: 'This value can not be negative.'
+        temperature:
+            - Range:
+                  min: -100
+                  max: 60
+                  groups: ['create', 'edit']
+                  notInRangeMessage: 'This value should be between {{ min }} and {{ max }}.'
+        date:
+            - NotBlank:
+                  groups: ['create', 'edit']
+                  message: 'Date is required.'
+        place:
+            - NotBlank:
+                  groups: ['create', 'edit']
+                  message: 'Place needs to be chosen.'
