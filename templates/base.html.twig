@@ -44,6 +44,11 @@
                     </li>
                 </ul>
             </div>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a style="color: yellow" href="{{ path('app_logout') }}">Logout</a>
+            {% else %}
+                <a style="color: yellow" href="{{ path('app_login') }}">Login</a>
+            {% endif %}
         </div>
     </nav>
 
